@@ -20,8 +20,6 @@ if !isfile(GENERIC_HTTP_BUNDLE_PATH)
 end
 const bundle_key = AssetRegistry.register(GENERIC_HTTP_BUNDLE_PATH)
 
-include(joinpath(@__DIR__, "..", "..", "deps", "mimetypes.jl"))
-
 """
 Serve an asset from the asset registry.
 """

@@ -9,9 +9,11 @@ import Widgets: node, AbstractWidget
 using Logging
 using UUIDs
 using Base64
+using RelocatableFolders
+
 
 include("../deps/bundlepaths.jl")
-
+include("../deps/mimetypes.jl")
 """
 The filesystem path where the WebIO frontend packages lives.
 """
@@ -20,7 +22,7 @@ const packagepath = normpath(joinpath(@__DIR__, "..", "packages"))
 """
 The path of the main WebIO JavaScript bundle file.
 """
-const bundlepath = CORE_BUNDLE_PATH
+const bundlepath = @path CORE_BUNDLE_PATH
 
 """
 The MIME type for WebIO nodes.
@@ -89,7 +91,7 @@ end
 setup(provider::AbstractString) = setup(Symbol(provider))
 
 function prefetch_provider_file(basename)
-  filepath = joinpath(@__DIR__, "providers", basename)
+  filepath = @path joinpath(@__DIR__, "providers", basename)
   code = read(filepath, String)
   (file = filepath, code = code)
 end

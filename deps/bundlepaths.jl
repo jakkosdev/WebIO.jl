@@ -7,22 +7,22 @@ using Pkg.Artifacts
 # just as files in git).
 const WEBIO_VERSION = "0.8.15"
 
-const PACKAGES_PATH = normpath(joinpath(@__DIR__, "..", "packages"))
-const BUNDLES_PATH = normpath(joinpath(@__DIR__, "bundles"))
+const PACKAGES_PATH = @path normpath(joinpath(@__DIR__, "..", "packages"))
+const BUNDLES_PATH = @path normpath(joinpath(@__DIR__, "bundles"))
 
 function bundleurl(pkg::String, filename::String)
     return "https://unpkg.com/@webio/$(pkg)@$(WEBIO_VERSION)/dist/$(filename)"
 end
 
-const CORE_BUNDLE_PATH = joinpath(BUNDLES_PATH, "webio.bundle.js")
+const CORE_BUNDLE_PATH = @path joinpath(BUNDLES_PATH, "webio.bundle.js")
 const CORE_BUNDLE_URL = bundleurl("webio", "webio.bundle.js")
-const GENERIC_HTTP_BUNDLE_PATH = joinpath(BUNDLES_PATH, "generic-http.bundle.js")
+const GENERIC_HTTP_BUNDLE_PATH = @path joinpath(BUNDLES_PATH, "generic-http.bundle.js")
 const GENERIC_HTTP_BUNDLE_URL = bundleurl("generic-http-provider", "generic-http.bundle.js")
-const MUX_BUNDLE_PATH = joinpath(BUNDLES_PATH, "mux.bundle.js")
+const MUX_BUNDLE_PATH = @path joinpath(BUNDLES_PATH, "mux.bundle.js")
 const MUX_BUNDLE_URL = bundleurl("mux-provider", "mux.bundle.js")
 
 # Deprecated! Remove for WebIO version 1.0.0
-const BLINK_BUNDLE_PATH = joinpath(BUNDLES_PATH, "blink.bundle.js")
+const BLINK_BUNDLE_PATH = @path joinpath(BUNDLES_PATH, "blink.bundle.js")
 const BLINK_BUNDLE_URL = bundleurl("blink-provider", "blink.bundle.js")
 
 function download_bundle(name::String, path::String, url::String)

@@ -152,7 +152,7 @@ julia> WebIO.getextension("https://my-cdn.net/foo.bar.css?version=1")
 "css"
 ```
 """
-getextension(path) = lowercase(last(split(first(split(path, "?")), ".")))
+getextension(path) = last(split(first(split(path, "?")), "."))
 
 """
     islocal(path)
