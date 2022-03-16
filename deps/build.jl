@@ -1,4 +1,4 @@
-using JSON, RelocatablePaths
+using JSON, RelocatableFolders
 
 include("./bundlepaths.jl")
 download_js_bundles()
