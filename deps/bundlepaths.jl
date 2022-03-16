@@ -1,5 +1,6 @@
 using Pkg.TOML
 using Pkg.Artifacts
+using RelocatableFolders
 
 # Fix the NPM version for now
 # Now that we're not distributing Jupyter stuff via NPM, I'd rather just check
@@ -7,7 +8,8 @@ using Pkg.Artifacts
 # just as files in git).
 const WEBIO_VERSION = "0.8.15"
 
-path = normpath(joinpath(@__DIR__, "..", "packages"))
+# This needs to be cleaned up, it was rushed to get both the build step and relocatable paths to work
+path = @path normpath(joinpath(@__DIR__, "..", "packages"))
 isdir(path) || mkpath(path)
 const PACKAGES_PATH = @path path
 path = normpath(joinpath(@__DIR__, "bundles"))
